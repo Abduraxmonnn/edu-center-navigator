@@ -1,7 +1,7 @@
 ## Welcome to
 # TCB (Training Centers Base)
 
-![alt text](main_photo/TCB-Mock-Image.png)
+![alt text](images/main_image/TCB-Mock-Image.png)
 
 [//]: # (### About the project)
 

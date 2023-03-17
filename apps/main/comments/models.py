@@ -2,7 +2,7 @@
 from django.db import models
 
 # Project
-from apps.center.models import Center
+from apps.main.center.models import Center
 from apps.user.models import User
 
 

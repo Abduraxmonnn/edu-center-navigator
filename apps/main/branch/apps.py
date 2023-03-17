@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CommentsConfig(AppConfig):
+class BranchConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.comments'
+    name = 'apps.main.branch'

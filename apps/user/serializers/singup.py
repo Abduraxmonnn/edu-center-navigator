@@ -5,6 +5,9 @@ from rest_framework import serializers
 from apps.user.models import User
 
 class UserSignUpSerializer(serializers.ModelSerializer):
+    message_language = serializers.CharField(
+        max_length=2
+    )
 
     class Meta:
         model = User
@@ -13,10 +16,11 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             'surname',
             'username',
             'dob',
-            'phone_number'
+            'phone_number',
             'email',
             'password',
-            'is_verified'
+            'is_verified',
+            'message_language'
         ]
 
     def create(self, validated_data):

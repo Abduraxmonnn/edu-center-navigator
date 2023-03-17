@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 # Project
-from apps.courses.models import CourseCategory, Course
+from apps.main.courses.models import CourseCategory, Course
 
 
 class CourseInline(admin.TabularInline):

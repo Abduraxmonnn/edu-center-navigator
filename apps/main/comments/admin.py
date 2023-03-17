@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 # Project
-from apps.comments.models import CommentHelper, Comment
+from apps.main.comments.models import CommentHelper, Comment
 
 
 class CommentInline(admin.TabularInline):

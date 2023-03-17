@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 # Project
-from apps.address.models import Address
+from apps.main.address.models import Address
 
 
 @admin.register(Address)

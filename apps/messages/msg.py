@@ -1,4 +1,5 @@
 import json
+import random
 
 SUBJECT = {
     "EN": "Your account verification code",
@@ -6,7 +7,7 @@ SUBJECT = {
     "UZ": "Elektron pochta tasdiqlovchi kod"
 }
 
-OTP_CODE = 0
+OTP_CODE = random.randint(100000, 999999)
 
 MESSAGE = {
     "EN": "Hellooooo!!!\n\n"

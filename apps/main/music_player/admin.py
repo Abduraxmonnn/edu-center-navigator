@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 # Project
-from apps.music_player.models import Music
+from apps.main.music_player.models import Music
 
 
 @admin.register(Music)

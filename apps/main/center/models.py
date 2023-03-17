@@ -2,9 +2,9 @@
 from django.db import models
 
 # Project
-from apps.courses.models import CourseCategory, Course
-from apps.address.models import Address
-from apps.teacher.models import Teacher
+from apps.main.courses.models import CourseCategory, Course
+from apps.main.address.models import Address
+from apps.main.teacher.models import Teacher
 from apps.user.models import User
 
 

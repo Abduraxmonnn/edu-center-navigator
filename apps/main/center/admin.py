@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.utils.html import mark_safe
 
 # Project
-from apps.center.models import Center
+from apps.main.center.models import Center
 
 
 @admin.register(Center)

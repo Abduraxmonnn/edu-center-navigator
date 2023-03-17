@@ -48,13 +48,13 @@ INSTALLED_APPS = [
 
     # Apps
     'apps.user',
-    'apps.address',
-    'apps.music_player',
-    'apps.comments',
-    'apps.courses',
-    'apps.center',
-    'apps.branch',
-    'apps.teacher'
+    'apps.main.address',
+    'apps.main.music_player',
+    'apps.main.comments',
+    'apps.main.courses',
+    'apps.main.center',
+    'apps.main.branch',
+    'apps.main.teacher'
 ]
 
 SITE_ID = 1

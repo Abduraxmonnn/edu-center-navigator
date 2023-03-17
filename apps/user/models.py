@@ -27,12 +27,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         max_length=255
     )
-    phone_number = models.PositiveIntegerField(
+    phone_number = models.CharField(
+        max_length=13,
         blank=True,
         null=True,
-        validators=[
-            MaxValueValidator(12)
-        ]
     )
     email = models.EmailField(
         unique=True
