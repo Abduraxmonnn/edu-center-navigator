@@ -3,31 +3,20 @@
 
 ![alt text](images/main_image/TCB-Mock-Image.png)
 
-[//]: # (### About the project)
+### About the Project
 
-[//]: # (This project is an `online library` and was created for people who love to `read books` and `save their time`. )
+This project is an `Base of Centers` and was created for people who looking for centers for themselves otherwise clients 
+are able to publish their centers in `TCB`. Visitors have a lot of features just like they can find any centers `faster`, 
+they can `filter` center by our `statistic` or by their `number of students`, `branches`... Additional, Visitors have 
+access to `Top Teachers` of centers.
 
-[//]: # (People can `bookmark`, `like` and `rate`, when people bookmark, they can read these books after a while, because these books will be bookmarked. )
+### About the BackEnd
 
-[//]: # (Moreover, people can rate so that others can see how good, `high quality` and `interesting` the book is. )
+This project raised in architecture `MVT``(Model View Template)`. There are email verification, multilanguage, user token, 
+calculate statistics each centers and other features.
 
-[//]: # (They can leave `feedback` at any time and help in the development of our project. People who like our work, website, can make a `donation` to support us and our work. )
 
-[//]: # (In addition, they can follow our `social networks`.)
-
-[//]: # ()
-[//]: # (### About the BackEnd)
-
-[//]: # (This project was created in `MVC &#40;Model, View, Controller&#41;` architecture. )
-
-[//]: # (In addition, the project works in `PostgreSQL`. We have used `AbstractBaseUser` to create a user and the user has its )
-
-[//]: # (own user manager, also we are using a `Token` to generate tokens for secure our user. There are many libraries and packages that support our)
-
-[//]: # (project, such as `Django-Rest-Framework` for creating `APIs`, `Pillow` for photo processing, `psycopg2-binary` for `PostgreSQL`, and others.)
-
-[//]: # ()
-[//]: # (***)
+***
 
 ## Tech
 
