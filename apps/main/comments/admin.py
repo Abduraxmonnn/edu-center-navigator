@@ -1,5 +1,6 @@
 # Django
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 # Project
 from apps.main.comments.models import CommentHelper, Comment
@@ -9,7 +10,7 @@ class CommentInline(admin.TabularInline):
     model = Comment
 
 @admin.register(CommentHelper)
-class CommentHelperAdmin(admin.ModelAdmin):
+class CommentHelperAdmin(TranslationAdmin):
     inlines = [
         CommentInline,
     ]

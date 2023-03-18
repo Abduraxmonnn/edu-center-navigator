@@ -1,5 +1,6 @@
 # Django
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 # Project
 from apps.main.courses.models import CourseCategory, Course
@@ -10,7 +11,7 @@ class CourseInline(admin.TabularInline):
 
 
 @admin.register(CourseCategory)
-class CourseCategoryAdmin(admin.ModelAdmin):
+class CourseCategoryAdmin(TranslationAdmin):
     inlines = [
         CourseInline
     ]
@@ -20,7 +21,7 @@ class CourseCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
+class CourseAdmin(TranslationAdmin):
     list_display = ['name', 'category', 'get_categories', 'price', 'course_duration']
     list_display_links = ('name', 'category')
     list_filter = ['category', 'price']

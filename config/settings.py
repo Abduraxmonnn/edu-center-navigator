@@ -4,7 +4,6 @@
 import os
 import sys
 from pathlib import Path
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +29,7 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,16 +62,14 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
-
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
@@ -175,7 +173,7 @@ All SQL queries to console
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uz'
 
 TIME_ZONE = 'Asia/Tashkent'
 
@@ -203,6 +201,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Additional Settings
+
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
@@ -210,3 +210,28 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_FROM = os.environ.get('EMAIL_FROM')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('uz', gettext('Uzbek')),
+    ('en', gettext('English')),
+    ('ru', gettext('Russian')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('en', 'ru', 'uz')
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'apps.user.translation',
+    'apps.main.center.translation',
+    'apps.main.branch.translation',
+    'apps.main.teacher.translation',
+    'apps.main.courses.translation',
+    'apps.main.address.translation',
+    'apps.main.comments.translation',
+)

@@ -27,7 +27,7 @@ class CommentHelper(models.Model):
     )
 
     def __str__(self):
-        return self.owner
+        return self.owner.name
 
     class Meta:
         verbose_name = 'Comment Helper'
@@ -63,5 +63,5 @@ class Comment(models.Model):
         return f'{self.comment_helper.owner} {self.comment_helper.text} {self.center}'
 
     class Meta:
-        verbose_name = 'Comment Helper'
-        verbose_name_plural = 'Comment Helpers'
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
