@@ -12,6 +12,7 @@ class Teacher(models.Model):
     description = models.TextField()
     experience_year = models.FloatField()
     image = models.ImageField(
+        upload_to='teachers/%Y/%m',
         blank=True,
         null=True,
     )

@@ -29,7 +29,9 @@ class Branch(models.Model):
         on_delete=models.SET_NULL,
         null=True
     )
-    image = models.ImageField()
+    image = models.ImageField(
+        upload_to='branches/%Y/%m'
+    )
     courses = models.ManyToManyField(
         Course
     )

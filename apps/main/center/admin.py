@@ -14,7 +14,7 @@ class CenterAdmin(TranslationAdmin):
     list_filter = ['name', 'main_course', 'is_public']
     readonly_fields = ['get_image']
 
-    def get_image(self, image):
-        return mark_safe('<img src="/directory/%s" width="150" height="150" />' % image)
+    def get_image(self, obj):
+        return format_html('<img src="{0}" width="auto" height="150px" />'.format(obj.image.url))
 
     get_image.short_description = 'Image'

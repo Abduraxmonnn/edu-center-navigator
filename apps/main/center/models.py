@@ -30,7 +30,9 @@ class Center(models.Model):
         CourseCategory,
         on_delete=models.CASCADE
     )
-    image = models.ImageField()
+    image = models.ImageField(
+        upload_to='centers/%Y/%m'
+    )
     top_teacher = models.ManyToManyField(
         Teacher
     )
