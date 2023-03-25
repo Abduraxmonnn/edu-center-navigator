@@ -8,7 +8,7 @@ from rest_framework.authtoken.models import Token
 
 # Project
 from apps.user.models import User
-from apps.user.serializers.singup import UserSignUpSerializer
+from apps.user.serializers.user import UserSignUpSerializer
 from apps.emails.send_email_via.send_email import send_otp_via_email
 
 
@@ -32,6 +32,7 @@ class UserSignUpAPIView(APIView):
         if check_user.exists():
             if check_user.first().is_verified is True:
                 return Response({
+                    "status_code": 400,
                     "message": "User exists",
                 }, status=status.HTTP_400_BAD_REQUEST)
         user = User.objects.create_user(email=email, password=password)
@@ -42,11 +43,13 @@ class UserSignUpAPIView(APIView):
         user.dob = dob
         user.phone_number = phone_number
         user.is_verified = False
+        user.is_active = False
         user.expires_at = timezone.now()
         user.save()
         token = Token.objects.create(user=user)
         send_otp_via_email(user.email, lang=serializer.validated_data.get('message_language', 'EN'))
         return Response({
+            'status_code': 200,
             'message': 'Registration successfully check email',
             'token': token.key,
             'data': serializer.data

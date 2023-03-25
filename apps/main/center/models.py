@@ -21,6 +21,11 @@ class Center(models.Model):
         max_length=255,
         unique=True
     )
+    slug = models.CharField(
+        max_length=155,
+        blank=True,
+        null=True
+    )
     center_address = models.ForeignKey(
         Address,
         on_delete=models.SET_NULL,

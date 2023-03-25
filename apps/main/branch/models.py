@@ -20,6 +20,11 @@ class Branch(models.Model):
     name = models.CharField(
         max_length=255
     )
+    slug = models.CharField(
+        max_length=155,
+        blank=True,
+        null=True
+    )
     center = models.ForeignKey(
         Center,
         on_delete=models.CASCADE

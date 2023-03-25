@@ -43,6 +43,7 @@ class VerifyOTPAPIView(APIView):
                     'data': serializer.errors
                 }, status=status.HTTP_400_BAD_REQUEST)
             first_user.is_verified = True
+            first_user.is_active = True
             first_user.save()
 
             return Response({
