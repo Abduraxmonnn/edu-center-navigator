@@ -1,0 +1,7 @@
+.idea
+.venv
+venv
+*.pyc
+static
+media
+.env
