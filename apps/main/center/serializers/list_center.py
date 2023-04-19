@@ -8,8 +8,9 @@ from apps.main.center.serializers.create_center import CenterAddressSerializer, 
 
 
 class CenterCoursesSerializer(serializers.ModelSerializer):
-    model = Course
-    fields = '__all__'
+    class Meta:
+        model = Course
+        fields = '__all__'
 
 
 class CenterListSerializer(serializers.ModelSerializer):
