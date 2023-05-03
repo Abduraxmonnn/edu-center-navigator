@@ -15,5 +15,4 @@ class TeacherSerializer(serializers.ModelSerializer):
             'experience_year',
             'image',
             'number_students',
-            'center_id'
         ]

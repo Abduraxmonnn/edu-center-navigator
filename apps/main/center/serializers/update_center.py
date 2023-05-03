@@ -12,6 +12,7 @@ from apps.main.teacher.models import Teacher
 
 class CenterAddressSerializer(serializers.ModelSerializer):
     class Meta:
+        ref_name = 'Center Address for Update Center'
         model = Address
         fields = [
             'district',
@@ -27,6 +28,7 @@ class CenterTeacherSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
 
     class Meta:
+        ref_name = 'Center Teacher for Update Center'
         model = Teacher
         fields = [
             'name',
@@ -71,32 +73,30 @@ class CenterUpdateSerializer(serializers.ModelSerializer):
         instance.image = validated_data.get('image', instance.image)
         instance.is_public = validated_data.get('image', instance.is_public)
 
-        # top_teachers_data = validated_data.pop('top_teachers')
-        # for item in top_teachers_data:
-        #     try:
-        #         teacher_qs = Teacher.objects.get(name=instance.top_teachers.name)
-        #     except:
-        #         return Response({
-        #             'status_code: ': 404,
-        #             'message: ': 'Teacher Not Found'
-        #         }, status=status.HTTP_404_NOT_FOUND)
-        #
-        #     teacher = teacher_qs.first()
-        #     instance.top_teachers.add(teacher)
-        #
-        # courses_data = validated_data.pop('courses')
-        # for item in courses_data:
-        #     course_qs = Course.objects.filter(name__iexact=item['name'])
-        #
-        #     if course_qs.exists():
-        #         course = course_qs.first()
-        #     else:
-        #         return Response({
-        #             'status_code: ': 404,
-        #             'message: ': 'Course Not Found'
-        #         }, status=status.HTTP_404_NOT_FOUND)
-        #
-        #     instance.courses.add(course)
+        for item in validated_data.pop('top_teachers'):
+            try:
+                teacher_qs = Teacher.objects.get(name=instance.top_teachers.name)
+            except:
+                return Response({
+                    'status_code: ': 404,
+                    'message: ': 'Teacher Not Found'
+                }, status=status.HTTP_404_NOT_FOUND)
+
+            teacher = teacher_qs.first()
+            instance.top_teachers.add(teacher)
+
+        for item in validated_data.pop('courses'):
+            course_qs = Course.objects.filter(name__iexact=item['name'])
+
+            if course_qs.exists():
+                course = course_qs.first()
+            else:
+                return Response({
+                    'status_code: ': 404,
+                    'message: ': 'Course Not Found'
+                }, status=status.HTTP_404_NOT_FOUND)
+
+            instance.courses.add(course)
 
         instance.save()
         return instance

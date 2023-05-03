@@ -9,6 +9,7 @@ from apps.main.teacher.models import Teacher
 
 class CenterAddressSerializer(serializers.ModelSerializer):
     class Meta:
+        ref_name = 'Center Address for Create Center'
         model = Address
         fields = [
             'district',
@@ -24,6 +25,7 @@ class CenterTeacherSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
 
     class Meta:
+        ref_name = 'Center Teacher for Create Center'
         model = Teacher
         fields = [
             'name',
