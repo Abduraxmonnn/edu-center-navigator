@@ -17,7 +17,6 @@ class BranchAdmin(TranslationAdmin):
     def center_name(self, obj):
         return obj.center.name
 
-
     # def get_image(self, obj):
         # return format_html('<img src="{0}" width="auto" height="150px" />'.format(obj.image.url))
 
