@@ -13,6 +13,7 @@ class CenterRetrieveViewSet(viewsets.GenericViewSet,
     queryset = Center.objects.all()
     serializer_class = CenterRetrieveSerializer
     permission_classes = [AllowAny]
+    http_method_names = ['get']
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

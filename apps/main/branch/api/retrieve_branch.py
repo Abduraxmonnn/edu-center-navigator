@@ -13,6 +13,7 @@ class BranchRetrieveViewSet(viewsets.GenericViewSet,
     queryset = Branch.objects.all()
     serializer_class = BranchRetrieveSerializer
     permission_classes = [AllowAny]
+    http_method_names = ['get']
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
