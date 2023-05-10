@@ -30,18 +30,25 @@ class CenterCreateAPIView(APIView):
         if check_center.exists():
             return Response({
                 'status_code': 400,
-                'message': 'Center Exists'
+                'message': 'Center Already Exists'
             }, status=status.HTTP_400_BAD_REQUEST)
 
-        center = Center.objects.create(
-            name=name,
-            slug=serializer.validated_data.get('slug'),
-            center_address=center_address,
-            main_course=serializer.validated_data.get('main_course'),
-            image=serializer.validated_data.get('image'),
-            is_public=serializer.validated_data.get('is_public', False)
-        )
-        center.save()
+        try:
+            center = Center.objects.create(
+                name=name,
+                slug=serializer.validated_data.get('slug'),
+                center_address=center_address,
+                main_course=serializer.validated_data.get('main_course'),
+                image=serializer.validated_data.get('image'),
+                is_public=serializer.validated_data.get('is_public', False)
+            )
+            center.save()
+        except Exception as ex:
+            return Response({
+                'status_code: ': 400,
+                'message: ': 'Branch not Created, Please Make Sure All Field is Correct',
+                'error_message: ': ex
+            }, status=status.HTTP_400_BAD_REQUEST)
 
         for item in top_teachers:
             teacher, created = Teacher.objects.get_or_create(
