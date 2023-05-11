@@ -20,7 +20,7 @@ class CenterCoursesSerializer(serializers.ModelSerializer):
         model = Course
         fields = [
             'id',
-            'categroy',
+            'category',
             'name',
             'price',
             'course_duration',
