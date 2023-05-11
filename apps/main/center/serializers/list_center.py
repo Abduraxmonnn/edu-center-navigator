@@ -21,6 +21,7 @@ class CenterListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Center
         fields = [
+            'id',
             'name',
             'slug',
             'center_address',
