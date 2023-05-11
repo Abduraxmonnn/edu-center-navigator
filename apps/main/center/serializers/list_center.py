@@ -7,15 +7,23 @@ from apps.main.courses.models import Course, CourseCategory
 from apps.main.center.serializers.create_center import CenterAddressSerializer, CenterTeacherSerializer
 
 
-class CenterCourseCategorySerializer(serializers.ModelSerializer):
+class CenterMainCourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseCategory
         fields = '__all__'
 
 
+class CenterCourseCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseCategory
+        fields = [
+            'name'
+        ]
+
+
 class CenterCoursesSerializer(serializers.ModelSerializer):
     category = CenterCourseCategorySerializer(many=False)
-    
+
     class Meta:
         model = Course
         fields = [
@@ -32,6 +40,7 @@ class CenterListSerializer(serializers.ModelSerializer):
     center_address = CenterAddressSerializer(many=False)
     top_teachers = CenterTeacherSerializer(many=True)
     courses = CenterCoursesSerializer(many=True)
+    main_course = CenterMainCourseSerializer(many=False)
 
     class Meta:
         model = Center
@@ -44,7 +53,7 @@ class CenterListSerializer(serializers.ModelSerializer):
             'image',
             'top_teachers',
             'courses',
-            'number_studens',
+            'number_students',
             'is_public',
             'visited',
             'score',
