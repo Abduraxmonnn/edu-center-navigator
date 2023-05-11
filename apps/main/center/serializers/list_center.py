@@ -3,14 +3,29 @@ from rest_framework import serializers
 
 # Project
 from apps.main.center.models import Center
-from apps.main.courses.models import Course
+from apps.main.courses.models import Course, CourseCategory
 from apps.main.center.serializers.create_center import CenterAddressSerializer, CenterTeacherSerializer
 
 
+class CenterCourseCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CourseCategory
+        fields = '__all__'
+
+
 class CenterCoursesSerializer(serializers.ModelSerializer):
+    category = CenterCourseCategorySerializer(many=False)
+    
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = [
+            'id',
+            'categroy',
+            'name',
+            'price',
+            'course_duration',
+            'last_updated',
+        ]
 
 
 class CenterListSerializer(serializers.ModelSerializer):
