@@ -57,6 +57,10 @@ class Center(models.Model):
         null=True,
         default=0
     )
+    number_students = models.IntegerField(
+        blank=True,
+        null=True
+    )
     created_date = models.DateField(
         auto_now_add=True
     )
