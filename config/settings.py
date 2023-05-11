@@ -204,6 +204,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Additional Settings
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://tcbapi-production.up.railway.app/'
+]
+
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')

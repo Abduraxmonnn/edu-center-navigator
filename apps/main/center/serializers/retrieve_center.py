@@ -29,6 +29,7 @@ class CenterRetrieveSerializer(serializers.ModelSerializer):
             'top_teachers',
             'courses',
             'is_public',
+            'number_students',
             'visited',
             'score',
         ]
