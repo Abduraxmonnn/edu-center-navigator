@@ -44,6 +44,7 @@ class CenterListSerializer(serializers.ModelSerializer):
             'image',
             'top_teachers',
             'courses',
+            'number_studens',
             'is_public',
             'visited',
             'score',
