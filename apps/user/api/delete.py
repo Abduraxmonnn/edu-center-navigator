@@ -19,7 +19,7 @@ class UserDeleteAPIView(APIView):
 
     def delete(self, request, pk=None):
         try:
-            obj = User.objects.get_object_or_404(pk=pk)
+            obj = User.objects.get(pk=pk)
             obj.delete()
         except Exception as ex:
             return Response({

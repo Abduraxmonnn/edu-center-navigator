@@ -19,7 +19,7 @@ class DeleteCenterAPIView(APIView):
 
     def delete(self, request, pk=None):
         try:
-            obj = Center.objects.get_object_or_404(pk=pk)
+            obj = Center.objects.get(pk=pk)
             obj.delete()
         except Exception as ex:
             return Response({
