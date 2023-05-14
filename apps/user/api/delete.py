@@ -4,22 +4,22 @@ from rest_framework import status
 from rest_framework.response import Response
 
 # Project
-from apps.main.center.models import Center
-from apps.main.center.serializers import CenterDeleteSerializer
+from apps.user.models import User
+from apps.user.serializers.user import UserDeleteSerializer
 
 
-class DeleteCenterAPIView(APIView):
+class UserDeleteAPIView(APIView):
     """
     This API used for Delete Centers.
     This api get an ID of Center
     """
-    model = Center
-    queryset = Center.objects.all()
-    serializer_class = CenterDeleteSerializer
+    model = User
+    queryset = User.objects.all()
+    serializer_class = UserDeleteSerializer
 
     def delete(self, request, pk=None):
         try:
-            obj = Center.objects.get_object_or_404(pk=pk)
+            obj = User.objects.get_object_or_404(pk=pk)
             obj.delete()
         except Exception as ex:
             return Response({
