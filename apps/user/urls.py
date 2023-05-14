@@ -2,10 +2,11 @@
 from django.urls import path
 
 # Project
-from apps.user.api import UserSignUpAPIView, VerifyOTPAPIView, UserTokenAPIView, UserMeView, UserListView
+from apps.user.api import UserSignUpAPIView, UserLogInView, VerifyOTPAPIView, UserTokenAPIView, UserMeView, UserListView
 
 urlpatterns = [
     path('signup/', UserSignUpAPIView.as_view()),
+    path('signin/', UserLogInView.as_view()),
     path('verify/', VerifyOTPAPIView.as_view()),
     path('token/get/<int:pk>/', UserTokenAPIView.as_view()),
     path('me/<int:pk>/', UserMeView.as_view()),
