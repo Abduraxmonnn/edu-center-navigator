@@ -32,15 +32,15 @@ class UserSignUpSerializer(serializers.ModelSerializer):
 
 
 class UserLogInSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(required=False)
-    email = serializers.CharField(required=False)
+    email = serializers.CharField()
 
     class Meta:
         model = User
         fields = [
-            'username',
+            'email',
             'password'
         ]
+
 
 
 class UserSerializer(serializers.ModelSerializer):
