@@ -16,7 +16,6 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             'name',
             'surname',
             'username',
-            # 'dob',
             'phone_number',
             'email',
             'password',
