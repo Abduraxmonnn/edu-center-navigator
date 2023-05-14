@@ -21,7 +21,8 @@ SECRET_KEY = 'django-insecure-jo1s%t6&tyv8u4biofjk*w)_zvgu8lp)xzydr*q*1c#1a!u%#9
 DEBUG = True
 
 ALLOWED_HOSTS = ['*', 'https://tcbapi-production.up.railway.app/']
-CSRF_TRUSTED_ORIGINS = ['https://tcbapi-production.up.railway.app/', 'http://127.0.0.1:8000/']
+CSRF_TRUSTED_ORIGINS = ['https://tcbapi-production.up.railway.app/', 'http://127.0.0.1:8000/',
+                        'https://*.up.railway.app', 'https://*.127.0.0.1']
 
 INTERNAL_IPS = [
     '127.0.0.1'
@@ -65,6 +66,9 @@ SITE_ID = 1
 #SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
