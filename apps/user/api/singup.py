@@ -24,7 +24,7 @@ class UserSignUpAPIView(APIView):
         name = serializer.validated_data['name']
         surname = serializer.validated_data['surname']
         username = serializer.validated_data['username']
-        dob = serializer.validated_data['dob']
+        # dob = serializer.validated_data['dob']
         phone_number = serializer.validated_data['phone_number']
         email = serializer.validated_data['email']
         password = serializer.validated_data['password']
@@ -40,7 +40,7 @@ class UserSignUpAPIView(APIView):
         user.surname = surname
         user.username = username
         user.password = password
-        user.dob = dob
+        # user.dob = dob
         user.phone_number = phone_number
         user.is_verified = False
         user.is_active = False

@@ -16,7 +16,7 @@ class UserSignUpSerializer(serializers.ModelSerializer):
             'name',
             'surname',
             'username',
-            'dob',
+            # 'dob',
             'phone_number',
             'email',
             'password',
@@ -32,7 +32,6 @@ class UserSignUpSerializer(serializers.ModelSerializer):
 
 
 class UserLogInSerializer(serializers.ModelSerializer):
-    # username = serializers.CharField(required=False)
     email = serializers.CharField()
 
     class Meta:
