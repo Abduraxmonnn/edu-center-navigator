@@ -8,6 +8,10 @@ schema_view = get_schema_view(
         title="Snippets API",
         default_version='v1',
         license=openapi.License(name="BSD License"),
+
+        description="Test description",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@snippets.local"),
     ),
     public=True,
     permission_classes=[permissions.AllowAny],

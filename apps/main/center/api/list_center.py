@@ -12,7 +12,7 @@ from apps.main.center.serializers import CenterListSerializer
 
 
 class CenterListViewSet(ModelViewSet):
-    queryset = Center.objects.all()\
+    queryset = Center.objects.filter(is_public=True)\
         .select_related('center_address', 'main_course')\
         .prefetch_related('courses', 'top_teachers')
     serializer_class = CenterListSerializer
