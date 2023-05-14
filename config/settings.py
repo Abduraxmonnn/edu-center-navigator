@@ -21,6 +21,7 @@ SECRET_KEY = 'django-insecure-jo1s%t6&tyv8u4biofjk*w)_zvgu8lp)xzydr*q*1c#1a!u%#9
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://tcbapi-production.up.railway.app/', 'http://127.0.0.1:8000/']
 
 INTERNAL_IPS = [
     '127.0.0.1'
