@@ -29,7 +29,7 @@ class CenterListViewSet(ModelViewSet):
         'center_address__district',
     ]
     search_fields = [
-        'name',
+        '^name',
         'main_course__name',
         'courses__name',
 

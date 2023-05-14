@@ -5,3 +5,4 @@ from apps.user.api.login import UserLogInView
 from apps.user.api.verify_account import VerifyOTPAPIView
 from apps.user.api.userme import UserMeView
 from apps.user.api.list import UserListView
+from apps.user.api.delete import UserDeleteAPIView
