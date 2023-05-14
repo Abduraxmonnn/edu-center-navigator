@@ -1,5 +1,5 @@
 # USERNAME: admin@gmail.com
-# PASSWORD: admin1234
+# PASSWORD: admin123
 
 import os
 import sys
