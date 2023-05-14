@@ -10,6 +10,7 @@ from apps.main.center.serializers.list_center import CenterListSerializer
 
 class CenterCoursesSerializer(serializers.ModelSerializer):
     class Meta:
+        ref_name = 'CenterCoursesSerializerForRetrieveBranch'
         model = Course
         fields = '__all__'
 

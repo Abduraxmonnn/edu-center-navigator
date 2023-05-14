@@ -25,6 +25,7 @@ class CenterCoursesSerializer(serializers.ModelSerializer):
     category = CenterCourseCategorySerializer(many=False)
 
     class Meta:
+        ref_name = 'CenterCoursesSerializerForListCenter'
         model = Course
         fields = [
             'id',
