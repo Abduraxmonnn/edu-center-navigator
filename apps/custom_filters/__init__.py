@@ -1,1 +1,1 @@
-from apps.custom_filters.range_course_price_filter import CoursesFilter
+from apps.custom_filters.range_course_price_filter import CoursesFilter, CenterFilter
