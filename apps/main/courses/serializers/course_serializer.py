@@ -11,7 +11,7 @@ class CourseCategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CourseCreateSerializer(serializers.ModelSerializer):
+class CourseSerializer(serializers.ModelSerializer):
     category = CourseCategorySerializer(many=False)
 
     class Meta:

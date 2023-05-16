@@ -49,7 +49,7 @@ class UserSignUpAPIView(APIView):
         user.password = password
         user.phone_number = phone_number
         user.is_verified = False
-        user.is_active = False
+        user.is_active = True
         user.expires_at = timezone.now()
         user.save()
         token = Token.objects.create(user=user)

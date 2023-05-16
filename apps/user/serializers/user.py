@@ -41,6 +41,7 @@ class UserLogInSerializer(serializers.ModelSerializer):
         ]
 
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

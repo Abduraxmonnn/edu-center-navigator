@@ -1,0 +1,1 @@
+from apps.main.courses.serializers.course_serializer import CourseCategorySerializer, CourseSerializer
