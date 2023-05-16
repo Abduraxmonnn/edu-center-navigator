@@ -9,6 +9,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 # Project
 from apps.main.center.models import Center
 from apps.main.center.serializers import CenterListSerializer
+from apps.custom_filters import CenterFilter
 
 class CenterListViewSet(ModelViewSet):
     queryset = Center.objects.filter(is_public=True)\
@@ -19,14 +20,7 @@ class CenterListViewSet(ModelViewSet):
     http_method_names = ['get']
 
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    filterset_fields = [
-        'name',
-        'main_course__name',
-        'courses__name',
-        'courses__course_duration',
-
-        'center_address__district',
-    ]
+    filterset_class = CenterFilter
     search_fields = [
         '^name',
         'main_course__name',

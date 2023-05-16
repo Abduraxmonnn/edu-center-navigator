@@ -16,3 +16,18 @@ class CoursesFilter(FilterSet):
             'price',
             'course_duration'
         ]
+
+class CenterFilter(FilterSet):
+    courses__price = RangeFilter()
+
+    class Meta:
+        model = Center
+        fields = [
+            'name',
+            'main_course__name',
+            'courses__name',
+            'courses__course_duration',
+
+            'center_address__district',
+            'courses__price',
+        ]
