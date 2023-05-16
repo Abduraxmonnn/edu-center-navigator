@@ -10,7 +10,6 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from apps.main.center.models import Center
 from apps.main.center.serializers import CenterListSerializer
 
-
 class CenterListViewSet(ModelViewSet):
     queryset = Center.objects.filter(is_public=True)\
         .select_related('center_address', 'main_course')\
