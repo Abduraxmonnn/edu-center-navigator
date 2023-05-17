@@ -59,3 +59,14 @@ class CenterListSerializer(serializers.ModelSerializer):
             'visited',
             'score',
         ]
+
+class CenterCoursesListSerializer(serializers.ModelSerializer):
+    courses = CenterCoursesSerializer(many=True)
+
+    class Meta:
+        model = Center
+        fields = [
+            'id',
+            'name',
+            'courses',
+        ]
