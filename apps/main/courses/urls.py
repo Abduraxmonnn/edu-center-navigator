@@ -3,7 +3,7 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 # Project
-from apps.main.courses.api import CourseListViewSet
+from apps.main.courses.api import CourseListViewSet, CourseCenterListAPIView
 
 router = DefaultRouter()
 # router.register('create', TeacherCreateViewSet, 'teacher_create')
@@ -13,5 +13,7 @@ router.register('list/range/filter', CourseListViewSet, 'course_list')
 # router.register('destroy', TeacherDestroyViewSet, 'teacher_destroy')
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
+
+    path('list/course/center/', CourseCenterListAPIView.as_view())
 ]

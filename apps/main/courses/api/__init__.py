@@ -1,1 +1,1 @@
-from apps.main.courses.api.course_api import CourseListViewSet
+from apps.main.courses.api.course_api import CourseListViewSet, CourseCenterListAPIView

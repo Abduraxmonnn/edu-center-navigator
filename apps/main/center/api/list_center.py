@@ -8,7 +8,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 
 # Project
 from apps.main.center.models import Center
-from apps.main.center.serializers import CenterListSerializer
+from apps.main.center.serializers import CenterListSerializer, CenterCoursesListSerializer
 from apps.custom_filters import CenterFilter
 
 class CenterListViewSet(ModelViewSet):
@@ -30,3 +30,10 @@ class CenterListViewSet(ModelViewSet):
     ]
     ordering_fields = ['name', 'main_course__name', '-id']
     ordering = ['-id']
+
+
+class CenterCoursesListViewSet(ModelViewSet):
+    queryset = Center.objects.filter(is_public=True).prefetch_related('courses')
+    serializer_class = CenterCoursesListSerializer
+    permission_classes = [AllowAny]
+    http_method_names = ['get']

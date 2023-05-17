@@ -6,10 +6,11 @@ from rest_framework import routers
 
 # Project
 from apps.main.center.api import CenterCreateAPIView, CenterListViewSet, CenterUpdateViewSet, DeleteCenterAPIView, \
-    CenterRetrieveViewSet
+    CenterRetrieveViewSet, CenterCoursesListViewSet
 
 router = routers.DefaultRouter()
 router.register(r'list', CenterListViewSet)
+router.register(r'list_courses', CenterCoursesListViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
