@@ -33,7 +33,19 @@ class CenterListViewSet(ModelViewSet):
 
 
 class CenterCoursesListViewSet(ModelViewSet):
-    queryset = Center.objects.filter(is_public=True).prefetch_related('courses')
+    queryset = Center.objects.filter(is_public=True).prefetch_related('courses', 'courses__category')
     serializer_class = CenterCoursesListSerializer
     permission_classes = [AllowAny]
     http_method_names = ['get']
+
+    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
+    filterset_class = CenterFilter
+    search_fields = [
+        '^name',
+        'main_course__name',
+        'courses__name',
+
+        'center_address__district',
+    ]
+    ordering_fields = ['name', 'main_course__name', '-id']
+    ordering = ['-id']
