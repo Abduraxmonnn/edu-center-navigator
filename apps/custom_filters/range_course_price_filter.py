@@ -25,6 +25,7 @@ class CenterFilter(FilterSet):
         fields = [
             'name',
             'main_course__name',
+            'courses__category__name',
             'courses__name',
             'courses__course_duration',
 

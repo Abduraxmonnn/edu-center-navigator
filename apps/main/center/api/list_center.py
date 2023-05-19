@@ -47,5 +47,5 @@ class CenterCoursesListViewSet(ModelViewSet):
 
         'center_address__district',
     ]
-    ordering_fields = ['name', 'main_course__name', '-id']
+    ordering_fields = ['name', 'main_course__name', '-id', 'price']
     ordering = ['-id']
