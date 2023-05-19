@@ -4,7 +4,6 @@ from rest_framework import serializers
 # Project
 from apps.main.courses.models import CourseCategory, Course
 
-
 class CourseCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseCategory
