@@ -16,6 +16,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'send_mailing_every_14_days': {
         'task': 'apps.main.news.tasks.py',
-        'schedule': crontab(minute='*/1')
+        'schedule': crontab(hour='*/336')
     }
 }
