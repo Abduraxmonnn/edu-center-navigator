@@ -8,11 +8,13 @@
 This project is an `Base of Centers` and was created for people who looking for centers for themselves otherwise clients 
 are able to publish their centers in `TCB`. Visitors have a lot of features just like they can find any centers `faster`, 
 they can `filter` center by our `statistic` or by their `number of students`, `branches`... Additional, Visitors have 
-access to `Top Teachers` of centers.
+access to `Top Teachers` of centers. We used to [Celery](https://docs.celeryq.dev/en/stable/) for sending mailing messages
+to users and [Flower](https://flower.readthedocs.io/en/latest/) for observe processes of tasks of 
+[Celery](https://docs.celeryq.dev/en/stable/) as Dashboard
 
 ### About the BackEnd
 
-This project raised in architecture `MVT``(Model View Template)`. There are email verification, multilanguage, user token, 
+This project raised in architecture `MVT` `(Model View Template)`. There are email verification, multilanguage, user token, 
 calculate statistics each centers and other features.
 
 
@@ -26,7 +28,7 @@ calculate statistics each centers and other features.
 
 And many other libraries.
 
-Dillinger requires [Python](https://www.python.org) v3.4+.
+Dillinger requires [Python](https://www.python.org) `v3.6+` or `v3.10`.
 
 ```shell
 $ git clone https://github.com/Abduraxmonnn/tcb_api.git
@@ -62,6 +64,11 @@ $ python manage.py migrate
 ```
 
 ***
+
+### Requirements before the Run
+
+Make sure you set up your `email` to send SMS to users and correct work of project.
+There are variables in settings.py that start with `EMAIL` which you have to set your `email details`.
 
 ## Development
 ### Configure `PostgreSQL`
