@@ -15,7 +15,7 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-jo1s%t6&tyv8u4biofjk*w)_zvgu8lp)xzydr*q*1c#1a!u%#9lyjq$zggf)f^s'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'corsheaders',
+    'rangefilter',
 
     # Apps
     'apps.user',
@@ -57,7 +58,8 @@ INSTALLED_APPS = [
     'apps.main.courses',
     'apps.main.center',
     'apps.main.branch',
-    'apps.main.teacher'
+    'apps.main.teacher',
+    'apps.main.news',
 ]
 
 SITE_ID = 1
@@ -258,3 +260,15 @@ MODELTRANSLATION_TRANSLATION_FILES = (
     'apps.main.address.translation',
     'apps.main.comments.translation',
 )
+
+# REDIS CONFIGS
+REDIS_HOST = '127.0.0.1'  # 0.0.0.0 if redis work in docker
+REDIS_PORT = '6379'
+
+# CELERY CONFIGS
+CELERY_BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
