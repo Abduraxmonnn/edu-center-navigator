@@ -80,7 +80,7 @@ If you want to create a database with a different name, user and password, you c
 ```shell
 $ sudo -u postgres psql
 postgres=# ...
-CREATE DATABASE ocean_db;
+CREATE DATABASE tcb_db;
 CREATE USER tcb_user WITH PASSWORD 'tcb_12345';
 ALTER ROLE tcb_user SET client_encoding TO 'utf8';
 ALTER ROLE tcb_user SET default_transaction_isolation TO 'read committed';
