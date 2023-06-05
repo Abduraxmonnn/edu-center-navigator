@@ -24,6 +24,7 @@ class CenterListViewSet(ModelViewSet):
     search_fields = [
         '^name',
         'main_course__name',
+        'courses__category__name',
         'courses__name',
 
         'center_address__district',
