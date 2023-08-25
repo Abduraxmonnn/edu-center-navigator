@@ -17,6 +17,9 @@ to users and [Flower](https://flower.readthedocs.io/en/latest/) for observe proc
 This project raised in architecture `MVT` `(Model View Template)`. There are email verification, multilanguage, user token, 
 calculate statistics each centers and other features.
 
+### About the FrontEnd
+You can view project in github with link: https://github.com/MZayniddin/TCB
+
 
 ***
 
