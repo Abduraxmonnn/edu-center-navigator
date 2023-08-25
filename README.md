@@ -18,7 +18,7 @@ This project raised in architecture `MVT` `(Model View Template)`. There are ema
 calculate statistics each centers and other features.
 
 ### About the FrontEnd
-You can view project in github with link: https://github.com/MZayniddin/TCB
+You can view project in github with link: [TCB](https://github.com/MZayniddin/TCB)
 
 
 ***
