@@ -6,3 +6,4 @@ venv
 /media/
 .env
 db.sqlite3
+/docker/

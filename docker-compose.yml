@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  server:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - static_volume:/web/tcb_api/django_static
+    ports:
+      - "8000:8000"
+    environment:
+      DEBUG: "True"
+      CELERY_BROKER_URL: "redis://redis:6379/0"
+      CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+      BACKEND_DB: postgresql
+      POSTGRES_HOST: db
+      POSTGRES_DB: tcb_db_prod
+      POSTGRES_USER: tcb_user_prod
+      POSTGRES_PASSWORD: tcb_12345_prod
+      POSTGRES_PORT: 5432
+    depends_on:
+      - redis
+      - db
+
+  redis:
+    restart: unless-stopped
+    image: redis:7.0.5-alpine
+    ports:
+      - "6379:6379"
+
+  db:
+    image: postgres:11.0-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: tcb_db_prod
+      POSTGRES_USER: tcb_user_prod
+      POSTGRES_PASSWORD: tcb_12345_prod
+    ports:
+      - "5432:5432"
+
+volumes:
+  static_volume: {}
+  postgres_data: {}

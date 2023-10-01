@@ -15,12 +15,12 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*', 'https://tcbapi-production.up.railway.app/']
+ALLOWED_HOSTS = ['*', 'localhost', 'https://tcbapi-production.up.railway.app/']
 CSRF_TRUSTED_ORIGINS = ['https://tcbapi-production.up.railway.app/', 'http://127.0.0.1:8000/',
                         'https://*.up.railway.app', 'https://*.127.0.0.1']
 
@@ -63,9 +63,9 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
-#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -108,7 +108,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -119,17 +118,25 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
+DB_SQLITE = "sqlite"
+DB_POSTGRESQL = "postgresql"
+
+DATABASES_ALL = {
+    DB_SQLITE: {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    },
+    DB_POSTGRESQL: {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tcb_db',
-        'USER': 'tcb_user',
-        'PASSWORD': 'tcb_12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('POSTGRES_NAME', 'tcb_db_prod'),
+        'USER': os.environ.get('POSTGRES_USER', 'tcb_user_prod'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'tcb_12345_prod'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 
+DATABASES = {"default": DATABASES_ALL[os.environ.get("BACKEND_DB", DB_SQLITE)]}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -211,7 +218,6 @@ USE_TZ = True
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -246,7 +252,6 @@ EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_FROM = os.environ.get('EMAIL_FROM')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-
 
 gettext = lambda s: s
 LANGUAGES = (
