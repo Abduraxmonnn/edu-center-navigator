@@ -60,5 +60,6 @@ RUN pip install -r /web/requirements.txt
 # # Continue with the rest of your Dockerfile
 # CMD ["python", "./web/manage.py", "migrate"]
 # CMD ["python", "./web/manage.py", "runserver", "0.0.0.0:8000"]
+RUN python /web/manage.py makemigrations
 RUN python /web/manage.py migrate
 RUN python /web/manage.py runserver 0.0.0.0:8000

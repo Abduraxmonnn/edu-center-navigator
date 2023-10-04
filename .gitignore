@@ -7,3 +7,4 @@ venv
 .env
 db.sqlite3
 /docker/
+/docker-compose-old.yml

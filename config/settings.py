@@ -128,9 +128,9 @@ DATABASES_ALL = {
     },
     DB_POSTGRESQL: {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('POSTGRES_NAME', 'tcb_db_prod'),
-        'USER': os.environ.get('POSTGRES_USER', 'tcb_user_prod'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'tcb_12345_prod'),
+        'NAME': os.environ.get('POSTGRES_NAME', 'tcb_db'),
+        'USER': os.environ.get('POSTGRES_USER', 'tcb_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'tcb_12345'),
         'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
