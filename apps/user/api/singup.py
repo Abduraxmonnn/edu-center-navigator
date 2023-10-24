@@ -51,9 +51,14 @@ class UserSignUpAPIView(APIView):
         user.is_verified = False
         user.is_active = True
         user.expires_at = timezone.now()
-        user.save()
+        send_via_email = send_otp_via_email(user.email, lang=serializer.validated_data.get('message_language', 'EN'))
+        if 'error' in send_via_email:
+            return Response({
+                "status_code": 400,
+                "message": "An error occurred when creating a User, please check your email or contact the admin"
+            })
         token = Token.objects.create(user=user)
-        send_otp_via_email(user.email, lang=serializer.validated_data.get('message_language', 'EN'))
+        user.save()
         return Response({
             'status_code': 200,
             'message': 'Registration successfully check email',

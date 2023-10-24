@@ -8,8 +8,8 @@ from apps.user.models import User
 
 class CommentHelper(models.Model):
     """
-    This used to save information of comment owner and text...
-    :owner: This field connected to User as ForeignKey for determine owner of comment
+    This used to save information of a comment owner and text...
+    :owner: This field connected to User as foreign for determine an owner of comment
     """
     owner = models.ForeignKey(
         User,

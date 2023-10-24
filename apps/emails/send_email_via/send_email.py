@@ -17,14 +17,18 @@ def make_email_verify_msg(lang='EN'):
         "message": msg.MESSAGE[lang]
     }
 
+
 def send_otp_via_email(email, lang='EN'):
-    message = make_email_verify_msg(lang=lang.upper())
-    email_from = settings.EMAIL_FROM
-    user_obj = User.objects.get(email=email)
-    send_mail(f"{message['subject']}", f"{message['message']}", email_from, [user_obj.email], fail_silently=False)
-    user_obj.otp = message['otp_code']
-    user_obj.save()
-    return user_obj
+    try:
+        message = make_email_verify_msg(lang=lang.upper())
+        email_from = settings.EMAIL_FROM
+        user_obj = User.objects.get(email=email)
+        send_mail(f"{message['subject']}", f"{message['message']}", email_from, [user_obj.email], fail_silently=False)
+        user_obj.otp = message['otp_code']
+        user_obj.save()
+        return user_obj
+    except Exception as ex:
+        return {'status': 400, 'error': ex}
 
 
 def send_mailing_email(subject, message, email_from):

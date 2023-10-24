@@ -15,8 +15,6 @@ services:
       POSTGRES_NAME: tcb_db_prod
       POSTGRES_USER: tcb_user_prod
       POSTGRES_PASSWORD: tcb_12345_prod
-      POSTGRES_HOST: db
-      POSTGRES_PORT: 5432
     ports:
       - "5432:5432"
     volumes:

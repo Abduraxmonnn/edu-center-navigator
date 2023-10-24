@@ -4,6 +4,8 @@
 import os
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -120,6 +122,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DB_SQLITE = "sqlite"
 DB_POSTGRESQL = "postgresql"
+DB_POSTGRESQL_DOCKER = "postgresql_docker"
 
 DATABASES_ALL = {
     DB_SQLITE: {
@@ -133,10 +136,18 @@ DATABASES_ALL = {
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'tcb_12345'),
         'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+    },
+    DB_POSTGRESQL_DOCKER: {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_NAME_DOCKER', 'tcb_db_prod'),
+        'USER': os.environ.get('POSTGRES_USER_DOCKER', 'tcb_user_prod'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD_DOCKER', 'tcb_12345_prod'),
+        'HOST': os.environ.get('POSTGRES_HOST_DOCKER', 'db'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 
-DATABASES = {"default": DATABASES_ALL[os.environ.get("BACKEND_DB", DB_SQLITE)]}
+DATABASES = {"default": DATABASES_ALL[os.environ.get("BACKEND_DB")]}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -245,13 +256,22 @@ SWAGGER_SETTINGS = {
     },
 }
 
-EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND')
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_BACKEND = str(os.environ.get('EMAIL_BACKEND'))
+EMAIL_HOST = str(os.environ.get('EMAIL_HOST'))
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS')
-EMAIL_PORT = os.environ.get('EMAIL_PORT')
-EMAIL_FROM = os.environ.get('EMAIL_FROM')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = str(os.environ.get('EMAIL_PORT'))
+EMAIL_FROM = str(os.environ.get('EMAIL_FROM'))
+EMAIL_HOST_USER = str(os.environ.get('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_HOST_PASSWORD'))
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = '587'
+# EMAIL_FROM = 'abduraxmonasatullayev35@gmail.com'
+# EMAIL_HOST_USER = 'abduraxmonasatullayev35@gmail.com'
+# EMAIL_HOST_PASSWORD = 'goyaaxpuiitapzza'
+
 
 gettext = lambda s: s
 LANGUAGES = (
